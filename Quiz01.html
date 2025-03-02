@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz By Amna Malik</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: white; 
+            padding: 20px;
+        }
+        h1 {
+            color: black; 
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: blue; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Quiz!</h1>
+    <p>Click the button below to start.</p>
+    <button onclick="startQuiz()">Start Quiz</button>
+    
+    <script>
+        function startQuiz() {
+            let userName = prompt("Enter your name:").trim(); // Ask for user's name
+
+            if (!userName) { // Check if the name is empty
+                alert("Please enter your name to start.");
+                return;
+            }
+
+            let questions = [
+                {q: "What does HTML stand for?", a: "Hypertext Markup Language"},
+                {q: "What does CSS stand for?", a: "Cascading Style Sheets"},
+                {q: "Which programming language is used to create dynamic web pages?", a: "JavaScript"},
+                {q: "What is the full form of HTTP?", a: "Hypertext Transfer Protocol"},
+                {q: "Which HTML tag is used to create a hyperlink?", a: "<a>"},
+                {q: "What does SEO stand for in web development?", a: "Search Engine Optimization"},
+                {q: "What is the purpose of the <head> tag in HTML?", a: "Contains metadata and links to stylesheets/scripts"},
+                {q: "Which CSS property is used to change the text color?", a: "color"},
+                {q: "What is Bootstrap used for?", a: "Responsive web design"},
+                {q: "Which JavaScript function is used to print messages in the console?", a: "console.log"},
+                {q: "What is the purpose of a web server?", a: "To store and deliver web pages"},
+                {q: "Which protocol is used for secure communication over the web?", a: "HTTPS"},
+                {q: "What does API stand for?", a: "Application Programming Interface"},
+                {q: "What is the difference between ID and Class in CSS?", a: "ID is unique, Class can be used multiple times"},
+                {q: "Which HTML tag is used to insert an image?", a: "<img>"}
+            ];
+            
+            let score = 0;
+            let playQuiz = confirm(`Hello ${userName}! Do you want to start the quiz?`);
+
+            if (!playQuiz) {
+                alert("Maybe next time!");
+                return;
+            }
+
+            for (let i = 0; i < questions.length; i++) {
+                let answer = prompt(questions[i].q)?.trim(); // Get user answer
+                if (answer && answer.toLowerCase() === questions[i].a.toLowerCase()) {
+                    alert("Correct!");
+                    score++;
+                } else {
+                    alert(`Wrong! The correct answer is: ${questions[i].a}`);
+                }
+            }
+
+            alert(`${userName}, Quiz Over! 🎉 Your final score is: ${score} out of ${questions.length}`);
+
+            if (confirm("Do you want to play again?")) {
+                startQuiz();
+            } else {
+                alert(`Thanks for playing, ${userName}! Have a great day!`);
+            }
+        }
+    </script>
+</body>
+</html>
